@@ -1,0 +1,31 @@
+#+TITLE: Magi Template for Guix
+
+* Motivation
+Guix is a great system, but it always takes a lot of =guix home -L <directory> reconfigure <config>=. This is a template repository that allows you to set up your configurations into a simple project.
+
+* Usage
+First you need to set up =config.scm=, it is easy, if you know how to set up Guix. You can have as many users and systems as you want. You don't even need to set up them in the Makefile!
+
+If you want to set up your configuration inside modules, simply put them in the root directory of this repository, everything will work automatically, as Magi adds root directory into GUILE_LOAD_PATH.
+
+** Home
+To make your guix home:
+
+#+begin_src sh
+  make <username>-<hostname>-home-build
+  make <username>-<hostname>-home-reconfigure
+#+end_src
+
+** System
+
+To make your guix system:
+
+#+begin_src sh
+  make <hostname>-system-build
+  make <hostname>-system-reconfigure
+#+end_src
+
+* Credits
+The Makefile and basic ideas are taken from [[https://git.sr.ht/~abcdw/rde][rde]]. Modifications are made by me. I mainly simplified it, rde uses a system of so-called features. It is a great project, however it is highly opinionated. Magi is using the skeleton of rde, some of it's main ideas, but it's much more bare bones.
+
+My code modifications are public domain, but keep in mind that rde is under GPLv3.
