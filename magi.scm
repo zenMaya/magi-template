@@ -48,14 +48,14 @@
 
 (define (find-config name configs)
   (match configs
-    (() (display "Config not found " name))
+    (() (display "Config not found\n"))
     ((head . tail) (if (equal? (magi-config-name head) name)
                        head
                        (find-config name tail)))))
 
 (define (find-user-config name configs)
   (match configs
-    (() (display "User config not found"))
+    (() (display "User config not found\n"))
     ((head . tail) (display (magi-user-config-name head)) (if (equal? (magi-user-config-name head) name)
                           head
                           (find-user-config name tail)))))
@@ -63,7 +63,6 @@
 (define-public (dispatcher configs)
   (let* ((magi-target (getenv "MAGI_TARGET"))
          (magi-target-list (string-split magi-target #\-)))
-    (pretty-print magi-target-list)
     (match (car magi-target-list)
       ("home" (magi-user-config-environment
                (find-user-config

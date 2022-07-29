@@ -16,4 +16,4 @@
              (account (user-account))
              (environment (home-environment))))))))
 
-(dispatcher (list %configs))
+(dispatcher %configs)
